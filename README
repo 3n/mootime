@@ -1,0 +1,37 @@
+mootime for MooTools 1.2
+Version 0.1
+Author: Ian Collins (3n)
+
+
+DESCRIPTION
+
+  mootime extends the Function Native with a couple of simple methods for logging the 
+  execution time of the given function.
+  
+  'time' will immediately run the function and console.log its execution time upon finishing.
+  
+  'avg_time' will store all the running times of a given function until it stops being called
+  for 1 second, at which point it will console.log the average time across all the executions.
+
+SYNTAX
+
+  my_function.time([message[, bind[, args]]])
+  
+  my_function.avg_time([message[, bind[, args]]])
+
+ARGUMENTS
+
+  message : (string, optional) The message (usually name of the function) to prepend
+  bind    : the value of the 'this' keyword inside my_function when executed
+  args    : the arguments to pass to my_function when executed
+
+
+EXAMPLES
+
+  // compare $ and $$ execution times
+  $.time('$', window, 'derp')
+  $$.time('$$', window, '#derp')
+  
+  // 
+  
+
