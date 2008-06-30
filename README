@@ -22,9 +22,13 @@ SYNTAX
 ARGUMENTS
 
   message : (string, optional) The message (usually name of the function) to prepend
-  bind    : the value of the 'this' keyword inside my_function when executed
-  args    : the arguments to pass to my_function when executed
+  bind    : (object, optional) the value of the 'this' keyword inside my_function when 
+            executed
+  args    : (array if multiple, optional) the arguments to pass to my_function when executed
 
+RETURNS
+  
+  Both methods return the return of the function they are attached to. 
 
 EXAMPLES
 
@@ -32,6 +36,9 @@ EXAMPLES
   $.time('$', window, 'derp')
   $$.time('$$', window, '#derp')
   
-  // 
+  // get average run-time of a function 'awesome' inside a tight loop
+  (100).times(function(x) { 
+    awesome.avg_time('awesome', this, ['some', 'args', 'for', 'awesome'])
+  })
   
 
