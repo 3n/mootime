@@ -42,3 +42,7 @@ EXAMPLES
   })
   
 
+TODO
+  
+  - Make a version of .time that returns a modified version of the function rather than calling 
+    it. Useful for functions that shouldn't be called immediately, but rather passed for execution later. 
