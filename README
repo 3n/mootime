@@ -41,6 +41,17 @@ EXAMPLES
     awesome.avg_time('awesome', this, ['some', 'args', 'for', 'awesome'])
   })
   
+  // anonymous function example
+  function derp(){
+    var asdf = "asdf"
+    var blah = "blah";
+    
+    (function(){
+      $(asdf).addEvent('click', do_something)
+      $(blah).addEvent('click', do_stuff)
+    }).time('adding events');
+  }
+  
 
 TODO
   
