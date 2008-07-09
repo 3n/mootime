@@ -6,18 +6,20 @@ Function.implement({
 		return r
 	},
 	avg_time: function(message, that, args){
-		if (!this.avg_time_storage) this.avg_time_storage = {times:[]}
+		if (!this.avg_time_storage) this.avg_time_storage = {}
+		if (!this.avg_time_storage[message]) this.avg_time_storage[message] = {times:[]}
+		var storage = this.avg_time_storage[message]
+		
 		var s = $time()
 		var r = this.apply(that, $splat(args))
-		
-		this.avg_time_storage.times.push($time() - s)
-		$clear(this.avg_time_storage.timer)
-		this.avg_time_storage.timer = ( function() {
-			console.log(
-				(message || "")
+
+		storage.times.push($time() - s)
+		$clear(storage.timer)
+		storage.timer = ( function() {
+			console.log(message 
 				+ " took "
-				+ this.avg_time_storage.times.average() + "ms on average and executed " 
-				+ this.avg_time_storage.times.length + " times")
+				+ storage.times.average() + "ms on average and executed " 
+				+ storage.times.length + " times")
 		} ).delay(1000, this)
 		
 		return r
