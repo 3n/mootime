@@ -6,6 +6,7 @@ Function.implement({
 		return r
 	},
 	avg_time: function(message, that, args){
+		if (!this.avg_time_storage) this.avg_time_storage = {times:[]}
 		var s = $time()
 		var r = this.apply(that, $splat(args))
 		
@@ -20,6 +21,15 @@ Function.implement({
 		} ).delay(1000, this)
 		
 		return r
-	},
-	avg_time_storage: {times:[]}
+	}
+});
+
+Array.implement({
+	average: function(){
+		var total = 0
+		this.each(function(x){
+			total += x
+		})
+		return total/this.length
+	}
 });
