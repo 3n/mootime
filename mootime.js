@@ -2,7 +2,8 @@ Function.implement({
 	time: function(message, that, args){
 		var s = $time()
 		var r = this.apply(that, $splat(args))
-		console.log((message || "") + " " + ($time() - s))
+		var m = (message || "") + " took " + ($time() - s) + 'ms'
+		$defined(window.console) ? console.log(m) : alert(m)
 		return r
 	},
 	avg_time: function(message, that, args){
@@ -16,10 +17,11 @@ Function.implement({
 		storage.times.push($time() - s)
 		$clear(storage.timer)
 		storage.timer = ( function() {
-			console.log(message 
+			var m = message 
 				+ " took "
 				+ storage.times.average() + "ms on average and executed " 
-				+ storage.times.length + " times")
+				+ storage.times.length + " times"
+			$defined(window.console) ? console.log(m) : alert(m)
 		} ).delay(1000, this)
 		
 		return r
